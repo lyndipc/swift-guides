@@ -73,7 +73,14 @@ const NewsletterPopUp = ({ onClose }) => {
           </div>
           <div className="flex flex-row gap-4">
             <NewsletterIcons kind="privacy" size="6" />
-            <p>Have read and agree to the Privacy Policy</p>
+            <p>
+              Have read and agree to the&nbsp;
+              <Link className="text-primary hover:underline" href="#">
+                <a href="/privacy" className="text-primary-500 hover:underline">
+                  Privacy Policy
+                </a>
+              </Link>
+            </p>
           </div>
           <h2 className="my-4 text-lg font-semibold capitalize">What you can expect from us:</h2>
           <div className="flex flex-row gap-4">
@@ -120,7 +127,12 @@ const NewsletterPopUp = ({ onClose }) => {
                 type="checkbox"
                 disabled={subscribed}
               />
-              I have read and agree with the&nbsp;<Link href="/privacy">Privacy Policy</Link>
+              I have read and agree with the&nbsp;
+              <Link href="#">
+                <a href="/privacy" className="text-primary-500 hover:underline">
+                  Privacy Policy
+                </a>
+              </Link>
               &nbsp;and consent to share my email with Swift Guides.
             </label>
           </div>
