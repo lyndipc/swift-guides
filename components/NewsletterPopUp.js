@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react'
-import Link from 'next/link'
 
 import siteMetadata from '@/data/siteMetadata'
 import NewsletterIcons from '@/components/newsletter-icons'
