@@ -1,5 +1,5 @@
 const siteMetadata = {
-  title: 'PHP Guides',
+  title: 'Swift Guides',
   author: 'Lyndi Castrejon',
   headerTitle: 'Swift Guides',
   description: 'Unleash the power of Swift with step-by-step tutorials and technical deep-dives.',
