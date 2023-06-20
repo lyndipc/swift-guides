@@ -75,11 +75,9 @@ const NewsletterPopUp = ({ onClose }) => {
             <NewsletterIcons kind="privacy" size="6" />
             <p>
               Have read and agree to the&nbsp;
-              <Link className="text-primary hover:underline" href="#">
-                <a href="/privacy" className="text-primary-500 hover:underline">
-                  Privacy Policy
-                </a>
-              </Link>
+              <a href="/privacy" className="text-primary-500 hover:underline">
+                Privacy Policy
+              </a>
             </p>
           </div>
           <h2 className="my-4 text-lg font-semibold capitalize">What you can expect from us:</h2>
@@ -128,11 +126,9 @@ const NewsletterPopUp = ({ onClose }) => {
                 disabled={subscribed}
               />
               I have read and agree with the&nbsp;
-              <Link href="#">
-                <a href="/privacy" className="text-primary-500 hover:underline">
-                  Privacy Policy
-                </a>
-              </Link>
+              <a href="/privacy" className="text-primary-500 hover:underline">
+                Privacy Policy
+              </a>
               &nbsp;and consent to share my email with Swift Guides.
             </label>
           </div>
