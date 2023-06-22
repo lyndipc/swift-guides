@@ -9,7 +9,7 @@ const UtterancesComponent = dynamic(
 )
 const GiscusComponent = dynamic(
   () => {
-    return import('@/components/comments/Giscus')
+    return import('@/components/comments/GiscusReact')
   },
   { ssr: false }
 )
