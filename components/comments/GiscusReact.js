@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useState } from 'react'
+import { useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import Giscus from '@giscus/react'
 
@@ -10,6 +10,7 @@ export default function GiscusReact() {
     repositoryId,
     category,
     categoryId,
+    pathname,
     mapping,
     reactions,
     metadata,
@@ -29,7 +30,6 @@ export default function GiscusReact() {
   useEffect(() => {
     const iframe = document.querySelector('iframe.giscus-frame')
     if (!iframe) return
-    // LoadComments()
   }, [commentsTheme])
 
   return (
@@ -39,6 +39,7 @@ export default function GiscusReact() {
       repoId={repositoryId}
       category={category}
       categoryId={categoryId}
+      term={pathname}
       mapping={mapping}
       reactionsEnabled={reactions}
       emitMetadata={metadata}
