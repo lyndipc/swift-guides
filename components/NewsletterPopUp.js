@@ -16,14 +16,13 @@ const NewsletterPopUp = ({ onClose }) => {
 
     if (gdprConsent.current.checked === false) {
       setError(true)
-      setMessage('You need to agree to our Privacy Policy and GDPR regulations to subscribe.')
+      setMessage('You need to agree to our Privacy Policy to subscribe.')
       return
     }
 
     const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {
       body: JSON.stringify({
         email: email.current.value,
-        consent: gdprConsent.current.checked,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -32,9 +31,10 @@ const NewsletterPopUp = ({ onClose }) => {
     })
 
     const { error } = await res.json()
+
     if (error) {
       setError(true)
-      setMessage('Your e-mail address is invalid or you are already subscribed!')
+      setMessage(`${error}`)
       return
     }
 

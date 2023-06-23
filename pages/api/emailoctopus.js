@@ -22,8 +22,14 @@ export default async (req, res) => {
       method: 'POST',
     })
 
+    if (response.status === 409) {
+      return res.status(500).json({ error: `Oops! You're already subscribed.` })
+    }
+
     if (response.status >= 400) {
-      return res.status(500).json({ error: `There was an error subscribing to the list.` })
+      return res.status(500).json({
+        error: `There was an error subscribing to the list. Check that your email is valid.`,
+      })
     }
 
     return res.status(201).json({ error: '' })

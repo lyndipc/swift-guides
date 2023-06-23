@@ -2,7 +2,7 @@ import { useState } from 'react'
 import NewsletterPopUp from '@/components/NewsletterPopUp'
 import Icon from '@/components/button-icons'
 
-const NewsletterPopUpButton = ({ title = 'Subscribe to the newsletter' }) => {
+const NewsletterButton = ({ title = 'Subscribe to the newsletter' }) => {
   const [isPopUpOpen, setPopUpOpen] = useState(false)
 
   const openPopUp = () => {
@@ -26,4 +26,4 @@ const NewsletterPopUpButton = ({ title = 'Subscribe to the newsletter' }) => {
   )
 }
 
-export default NewsletterPopUpButton
+export default NewsletterButton
