@@ -1,9 +1,11 @@
 import Link from '@/components/Link'
 import { PageSEO } from '@/components/SEO'
 import Tag from '@/components/Tag'
+
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import formatDate from '@/lib/utils/formatDate'
+import { useToast } from '@/hooks/ToastContext'
 
 import NewsletterButton from '@/components/NewsletterButton'
 
@@ -16,6 +18,8 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }) {
+  const { toast } = useToast()
+
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
@@ -96,6 +100,7 @@ export default function Home({ posts }) {
           <NewsletterButton />
         </div>
       )}
+      {toast && <div className="fixed bottom-4 right-4">{toast}</div>}
     </>
   )
 }

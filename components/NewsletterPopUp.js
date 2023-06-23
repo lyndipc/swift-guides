@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect } from 'react'
 
-import siteMetadata from '@/data/siteMetadata'
 import NewsletterIcons from '@/components/newsletter-icons'
+import siteMetadata from '@/data/siteMetadata'
+import { useToast } from '@/hooks/ToastContext'
 
 const NewsletterPopUp = ({ onClose }) => {
   const email = useRef(null)
@@ -10,6 +11,7 @@ const NewsletterPopUp = ({ onClose }) => {
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
+  const { showToast } = useToast()
 
   const subscribe = async (e) => {
     e.preventDefault()
@@ -44,6 +46,7 @@ const NewsletterPopUp = ({ onClose }) => {
     setMessage('Successfully! 🎉 You are now subscribed.')
 
     onClose()
+    showToast('You are now subscribed to the Swift Guides Newsletter! 🎉')
   }
 
   const handleClickOutside = (e) => {
