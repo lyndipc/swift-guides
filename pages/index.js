@@ -101,7 +101,7 @@ export default function Home({ posts }) {
         </div>
       )}
       {toast && (
-        <div className="bottom-2 mt-6 grid justify-center rounded-md bg-slate-50 px-3 py-3 text-center text-black dark:bg-gray-700 dark:text-slate-50">
+        <div className="bottom-2 mt-6 grid max-w-min justify-center rounded-md bg-slate-50 px-3 py-3 text-center text-black dark:bg-gray-700 dark:text-slate-50">
           {toast}
         </div>
       )}

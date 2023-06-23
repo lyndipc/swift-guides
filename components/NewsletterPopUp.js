@@ -45,9 +45,7 @@ const NewsletterPopUp = ({ onClose }) => {
     setSubscribed(true)
 
     onClose()
-    showToast(
-      "You're almost there! Check your email to confirm your subscription to the Swift Guides Newsletter! 🎉"
-    )
+    showToast('Check your email to confirm your subscription. ✅')
   }
 
   const handleClickOutside = (e) => {
