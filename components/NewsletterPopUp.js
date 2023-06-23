@@ -37,16 +37,18 @@ const NewsletterPopUp = ({ onClose }) => {
     if (error) {
       setError(true)
       setMessage(`${error}`)
+      showToast(`${error}`)
       return
     }
 
     email.current.value = ''
     setError(false)
     setSubscribed(true)
-    setMessage('Successfully! 🎉 You are now subscribed.')
 
     onClose()
-    showToast('You are now subscribed to the Swift Guides Newsletter! 🎉')
+    showToast(
+      "You're almost there! Check your email to confirm your subscription to the Swift Guides Newsletter! 🎉"
+    )
   }
 
   const handleClickOutside = (e) => {

@@ -9,7 +9,7 @@ export function ToastProvider({ children }) {
     setToast(message)
     setTimeout(() => {
       setToast(null)
-    }, 5000)
+    }, 7000)
   }
 
   return <ToastContext.Provider value={{ showToast, toast }}>{children}</ToastContext.Provider>
