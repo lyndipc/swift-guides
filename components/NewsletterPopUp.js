@@ -33,7 +33,6 @@ const NewsletterPopUp = ({ onClose }) => {
     })
 
     const { error } = await res.json()
-
     if (error) {
       setError(true)
       setMessage(`${error}`)

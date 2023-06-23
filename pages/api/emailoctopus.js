@@ -23,7 +23,7 @@ export default async (req, res) => {
     })
 
     if (response.status === 409) {
-      return res.status(500).json({ error: `Oops! You're already subscribed.` })
+      return res.status(409).json({ error: `Oops! You're already subscribed.` })
     }
 
     if (response.status >= 400) {
