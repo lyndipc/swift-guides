@@ -1,0 +1,115 @@
+---
+title: 'What is a Singleton?'
+date: '2020-07-01'
+lastmod: '2020-07-01'
+tags: ['design patterns', 'singleton']
+draft: false
+summary: 'A singleton is a common design pattern used in Swift. This is a short guide on how to implement a singleton in your applications.'
+layout: PostLayout
+bibliography: ['https://en.wikipedia.org/wiki/Singleton_pattern']
+---
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2}>
+
+## What is a Singleton?
+
+A singleton is a common design pattern that restricts the instantiation of a class to one object. It's useful when exactly one object is needed to coordinate actions across an application. The term comes from the mathematical concept of a singleton, used to describe a set with exactly one element.
+
+## How to Implement a Singleton
+
+You can implement a singleton in Swift by creating a class that contains a private initializer and a method that creates an instance of the class. The class can only be instantiated once, and the instance can be accessed through the method.
+
+To create a singleton in Swift, you can follow these steps:
+
+1. Create a class with a private initializer to prevent direct instantiation.
+2. Define a static property within the class that will hold a reference to the shared instance of the singleton class.
+3. Access the shared instance by calling the static property.
+
+### Syntax
+
+```swift
+class Singleton {
+
+   // Shared instance
+   static let shared = Singleton()
+
+   // Private initializer
+   private init() {}
+
+   // Class implementation ...
+}
+
+// Access the shared instance
+let singleton = SingletonClass.shared
+```
+
+### Example
+
+Let's take a look at an example where we have created a session management singleton.
+
+```swift
+class SessionManager {
+    static let shared = SessionManager()
+
+    privat var userLoggedIn: Bool = false
+
+    private init() {}
+
+    func login() {
+        // Login logic
+        userLoggedIn = true
+        print("User logged in successfully.")
+    }
+
+    func logout() {
+        // Logout logic
+        userLoggedIn = false
+        print("User logged out successfully.")
+    }
+
+    func isLoggedIn() -> Bool {
+        return userLoggedIn
+    }
+}
+```
+
+Here, we've created a singleton class known as, `SessionManager`. Which can be accessed through the static property `shared`.
+In this example, we've used the `userLoggedIn` property to track the user's session. `userLoggedIn` is updated when the user logs in or out, or when the `login()` or `logout()` methods are called.
+
+### Usage
+
+```swift
+let sessionManager = SessionManager.shared
+
+sessionManager.login()
+print("User login status: \(sessionManager.isLoggedIn())") // Output: User login status: true
+
+sessionManager.logout()
+print("User logout status: \(sessionManager.isLoggedIn())") // Output: User logout status: false
+```
+
+As mentioned in the first exmaple code snippet, the `shared` property is used to access the instance of the `SessionManager` class. Notice that we created a new instance of the `SessionManager` and assigned it to the `sessionManager` constant. This will be the only way to access the `SessionManager` class.
+
+Then, we move on to test that the class actually works correctly. With the `sessionManager` constant, we call on the `login()` and `logout()` methods to test that the session is changing. The `isLoggedIn()` method is used to print the user's session status.
+
+The output of the code snippet above is:
+
+```swift
+User logged in successfully.
+User login status: true
+User logged out successfully.
+User logout status: false
+```
+
+## Conclusion
+
+The `SessionManager` singleton gives us a way to manage user session tasks. It ensures that the state of the user session is shared and consistent throughou the app. This is just one example of how a singleton can be used in your applications.
+
+## Further Reading
+
+- [Singleton Pattern](https://en.wikipedia.org/wiki/Singleton_pattern)
+- [Singleton Design Pattern in Swift](https://www.raywenderlich.com/477-design-patterns-on-ios-using-swift-part-1-2)
+
+</TOCInline>
