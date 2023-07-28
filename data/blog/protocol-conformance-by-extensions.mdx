@@ -1,0 +1,50 @@
+---
+title: 'Protocol Conformance with Extensions'
+date: '2023-07-27'
+lastmod: '2023-07-27'
+tags: ['protocols', 'language feature', 'technique']
+draft: true
+summary: 'Avoid subclassing by using protocol conformance with extensions.'
+layout: PostLayout
+---
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={(2, 3)}></TOCInline>
+
+## What is Protocol Conformance with Extensions?
+
+With protocol conformance by extensions, you can define the primary functionality of a class in one place (in the class itself) and then use extensions to separate and add related functionality via protocol conformance.
+
+## Advantages
+
+1. **Code Separation**
+
+You can group related functionalities based on the protocols they adopt, which improves code organization and maintainability.
+
+2. **Readability**
+
+The main class focuses on its primary functionality, while protocol conformances are placed in separate extensions, making the code easier to read and understand.
+
+3. **Reusability**
+
+You can reuse the same extension to add protocol conformance to multiple classes or structures.
+
+4. **Ease of Extension**
+
+Adding new functionalities or conforming to new protocols becomes straightforward with extensions, as you don't need to modify the original class.
+
+5. **Clearer Intent**
+
+Extensions make it clear that certain functionalities are optional or add-ons, providing a clear separation of concerns.
+
+## Example Usage
+
+## When is it Useful?
+
+This pattern is widely used in Swift development and is especially useful when adopting multiple protocols or when providing a way to extend existing classes without subclassing or modifying the original implementation.
+
+## Further Reading
+
+- [Why do we add protocol conformance with extensions? - Stack Overflow](https://stackoverflow.com/questions/41236710/why-do-we-add-protocol-conformance-with-extensions)
+- [Protocols - Swift Documentation](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/protocols/)
