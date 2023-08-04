@@ -38,7 +38,7 @@ Okay, but that was a lot of jargon. Let's look at an example to help us understa
 
 Let's say that we're building a mobile app that allows users to customize photos. In this scenario, we could implement the delegate pattern to allow users to add filters to their photos.
 
-1. Define the Delegate Protocol
+### Define the Delegator
 
 To do this, we can create a photo processing delegate protocol that defines a method called `applyFilter`. This method takes in a `UIImage` and returns a `UIImage` with the filter applied.
 
@@ -50,7 +50,20 @@ protocol PhotoProcessingDelegate {
 
 Notice that the delegate protocol doesn't specify how the filter should be applied. This allows us to customize the behavior of the filter within our delegate class.
 
-2. Create the Delegating Class/Object
+### Create a Delegate Class
+
+Here, the `Filter` class becomes the delegate because it conforms to the `PhotoProcessingDelegate` protocol. Which means that it must implement the `applyFilter` method as defined in the protocol earlier.
+
+```swift
+class Filter: PhotoProcessingDelegate {
+    func applyFilter(to photo: UIImage) -> UIImage {
+        // Apply filter to image
+        return photo
+    }
+}
+```
+
+### Create a Class that Holds the Delegate
 
 Next, we can create a `PhotoProcessor` class that holds a weak reference to the delegate and calls its `applyFilter` method whenever necessary.
 
@@ -69,31 +82,16 @@ class PhotoProcessor {
 
 The `PhotoProcessor` class doesn't need to know the specific type of the delegate. It only needs to know that the delegate conforms to the `PhotoProcessingDelegate` protocol.
 
-3. Create the Delegate
-
-Here, the `Filter` class becomes the delegate because it conforms to the `PhotoProcessingDelegate` protocol. Which means that it must implement the `applyFilter` method as defined in the protocol earlier.
-
-```swift
-class Filter: PhotoProcessingDelegate {
-    func applyFilter(to photo: UIImage) -> UIImage {
-        // Apply filter to image
-        return photo
-    }
-}
-```
-
-4. Establish the Connection
+### Establish the Connection
 
 Now, we can create an instance of the `PhotoProcessor` class and set the `Filter` instance as its delegate.
 
 ```swift
 let photoProcessor = PhotoProcessor()
-let customFilter = Filter()
-
-photoProcessor.delegate = customFilter
+photoProcessor.delegate = Filter()
 ```
 
-5. Call the Delegate Method
+### Call the Delegate Method
 
 When we call the `process` method on the `PhotoProcessor` instance, it will call the `applyFilter` method on the `Filter` instance, passing in the image as an argument.
 
@@ -132,3 +130,4 @@ I hope this is a helpful introductory to the delegate pattern. If you have any q
 - [Using Delegates to Customize Object Behavior - Apple Developer Docs](https://developer.apple.com/documentation/swift/using-delegates-to-customize-object-behavior)
 - [Delegation Pattern in Swift - Anand Nimje](https://medium.com/@nimjea/delegation-pattern-in-swift-4-2-f6aca61f4bf5)
 - [Delegate Pattern Discussion - r/swift on Reddit](https://www.reddit.com/r/swift/comments/yy5x15/delegate_pattern/)
+- [Delegate Retain Cycle in Swift - Kaan Vural](https://medium.com/macoclock/delegate-retain-cycle-in-swift-4d9c813d0544)
