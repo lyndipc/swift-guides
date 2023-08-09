@@ -3,7 +3,7 @@ title: 'Build a Basic Camera Filter App with SwiftUI'
 date: '2023-08-12'
 lastmod: '2023-08-12'
 tags: ['tutorial', 'camera', 'AV Foundation', 'SwiftUI']
-draft: true
+draft: false
 summary: ''
 layout: PostLayout
 ---
@@ -66,13 +66,86 @@ We'll also need to add the `AVFoundation` framework to our project. We can do th
 
 ## Configuring the Camera
 
-Now that we have a basic user interface, we can start configuring the camera. We'll start by creating a `CameraController` class that will handle the camera configuration logic:
+Now that we have a basic user interface, we can start configuring the camera. We'll start by creating a `CameraController` class that will handle the camera configuration logic.
+
+First, let's import the `AVFoundation` framework and create a new `CameraController` class:
 
 ```swift
 import AVFoundation
 import UIKit
 
-class CameraManager: ObservableObject {
+class CameraController: ObservableObject {
+
+}
+```
+
+Next, let's define the properties that we'll need to configure the camera:
+
+```swift
+import AVFoundation
+import UIKit
+
+class CameraController: ObservableObject {
+    private let captureSession = AVCaptureSession()
+    private var videoOutput: AVCaptureVideoDataOutput?
+    private var photoOutput: AVCapturePhotoOutput?
+    private var previewLayer: AVCaptureVideoPreviewLayer?
+
+    @Published var currentImage: UIImage?
+
+    init() {
+        setupCamera()
+    }
+}
+```
+
+Let's break down the purpose behind each of these properties:
+
+**captureSession** - Holds the `AVCaptureSession` instance that we'll use to configure the camera.
+
+**videoOutput** - Holds the `AVCaptureVideoDataOutput` instance that we'll use to capture the live video feed.
+
+**previewLayer** - Holds the `AVCaptureVideoPreviewLayer` instance that we'll use to display the camera feed to the user interface.
+
+**photoOutput** - Holds the `AVCapturePhotoOutput` instance that we'll use to capture photos.
+
+**currentImage** - Allows us to display the captured image to the user interface. Notice that this is a `@Published` property. This is so we can update the UI whenever the image changes.
+
+Lastly, we've created an initializer that will configure the camera when the `CameraController` instance is created, `setupCamera`. Let's implement the `setupCamera()` method:
+
+```swift
+private func setupCamera() {
+    captureSession.beginConfiguration()
+
+    guard let backCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
+        print("Unable to access the back camera.")
+        return
+    }
+}
+```
+
+In this snippet, we're configuring `setupCamera()`. We start by calling the `beginConfiguration()` method on the `captureSession` property. This allows us to make changes to the session before we start it. The `beginConfiguration()` method is a builtin method of the `AVCaptureSession` class, you can read more about it [here](https://developer.apple.com/documentation/avfoundation/avcapturesession/1385609-beginconfiguration).
+
+We are using the `AVCaptureDevice` class to access the back camera. If successful, we will use the `backCamera` property to configure the input and output for the camera session. Otherwise, an error message will be printed.
+
+```swift
+guard let backCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
+    print("Unable to access the back camera.")
+    return
+}
+```
+
+Next, we have created a do - catch block to handle any errors that may occur when setting up the camera. We'll implement the `do` block in the next section. In the `catch` block, we print the error message to the console.
+
+Lastly, we call the `commitConfiguration()` method on the `captureSession` property. This method commits the configuration changes that we made to the session. You can read more about it [here](https://developer.apple.com/documentation/avfoundation/avcapturesession/1385608-commitconfiguration).
+
+The final `CameraController` class should look something like this:
+
+```swift
+import AVFoundation
+import UIKit
+
+class CameraController: ObservableObject {
     private let captureSession = AVCaptureSession()
     private var videoOutput: AVCaptureVideoDataOutput?
     private var photoOutput: AVCapturePhotoOutput?
