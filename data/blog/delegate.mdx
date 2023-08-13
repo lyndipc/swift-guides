@@ -14,29 +14,27 @@ layout: PostLayout
 
 ## What is the Delegate Pattern?
 
-Design patterns play a crucial role in software development, enabling us to build scalable, maintainable, and flexible applications. They are reusable solutions to common problems that we encounter during the development process.
+Design patterns are crucial in software development, enabling us to build scalable, maintainable, and flexible applications. They are reusable solutions to common problems we encounter during development.
 
 ## How Does it Work?
 
-At its core, the delegate pattern allows one object (the delegate) to communicate and customize the behavior of another object (the delegating object, or the delegator) without the need for the delegator to know the specific type of the delegate.
+At its core, the delegate pattern allows one object (the delegate) to communicate and customize the behavior of another object (the delegating object or the delegator) without requiring the delegator to know the specific type of delegate.
 
-The delegate pattern is made up of **two** essential components:
+There are **two** essential components of the delegate pattern:
 
 1. **Delegate Protocol**
 
-The delegate protocol (or the **delegator**) defines a set of methods that the delegating object should implement. Essentially, the protocol works like a contract. Any object acting as the delegate must conform to the methods defined in the protocol.
+The delegate protocol (or the **delegator**) defines a set of methods the delegating object should implement. The protocol works like a contract. Any object acting as the delegate must conform to the methods defined in the protocol.
 
 2. **Delegating Class/Object**
 
-The delegating object (or, the **delegate**) contains specific implementation details related to the methods defined in the protocol (delegator). The methods in the delegate are only called whenever necessary by the delgator. This is known as a weak reference and it allows the delegator to remain unaware of the delegate's specific implementation details.
+The delegating object (or the **delegate**) contains specific implementation details related to the methods defined in the protocol (delegator). The methods in the delegate are only called whenever necessary by the delegator. This weak reference allows the delegator to remain unaware of the delegate's specific implementation details.
 
-In other words, the delegator doesn't need to know the specific type of the delegate or how the delegate implements the methods defined in the protocol. This is what makes the delegate pattern modular.
-
-Okay, but that was a lot of jargon. Let's look at an example to help us understand the delegate pattern a little better.
+In other words, the delegator can learn the specific delegate type and how the delegate implements the protocol's methods, which makes the delegate pattern modular.
 
 ## Example Usage
 
-Let's say that we're building a mobile app that allows users to customize photos. In this scenario, we could implement the delegate pattern to allow users to add filters to their photos.
+Let's say we are building a mobile app that allows users to customize photos. In this scenario, we could implement the delegate pattern to allow users to add filters to their photos.
 
 ### Define the Delegator
 
@@ -48,11 +46,11 @@ protocol PhotoProcessingDelegate {
 }
 ```
 
-Notice that the delegate protocol doesn't specify how the filter should be applied. This allows us to customize the behavior of the filter within our delegate class.
+Notice that the delegate protocol does not specify how to apply the filter. This generalization allows us to customize the filter's behavior within our delegate class.
 
 ### Create a Delegate Class
 
-Here, the `Filter` class becomes the delegate because it conforms to the `PhotoProcessingDelegate` protocol. Which means that it must implement the `applyFilter` method as defined in the protocol earlier.
+Here, the `Filter` class becomes the delegate because it conforms to the `PhotoProcessingDelegate` protocol. Implementing the `Filter` class should include the `applyFilter` method as specified in the protocol.
 
 ```swift
 class Filter: PhotoProcessingDelegate {
@@ -65,7 +63,7 @@ class Filter: PhotoProcessingDelegate {
 
 ### Create a Class that Holds the Delegate
 
-Next, we can create a `PhotoProcessor` class that holds a weak reference to the delegate and calls its `applyFilter` method whenever necessary.
+Next, we can create a `PhotoProcessor` class with a weak reference to the delegate and calls its `applyFilter` method whenever necessary.
 
 ```swift
 class PhotoProcessor {
@@ -80,7 +78,7 @@ class PhotoProcessor {
 }
 ```
 
-The `PhotoProcessor` class doesn't need to know the specific type of the delegate. It only needs to know that the delegate conforms to the `PhotoProcessingDelegate` protocol.
+The `PhotoProcessor` class doesn't need to know the specific type of the delegate. It only needs to understand that the delegate conforms to the `PhotoProcessingDelegate` protocol.
 
 ### Establish the Connection
 
@@ -101,11 +99,11 @@ photoProcessor.process(originalImage)
 
 ## Advantages
 
-As you probably noticed in the example, the delegate pattern promotes loose coupling. Or, in simpler terms, it allows the components to be connected in a flexible manner. The real power of the delegate pattern lies in its ability to allow us to customize the behavior of an object without the need to subclass it.
+As you probably noticed in the example, the delegate pattern promotes loose coupling. Or, in simpler terms, this pattern flexibly connects components. The real power of the delegate pattern lies in its ability to allow us to customize the behavior of an object without the need to subclass it.
 
 ### Use Cases
 
-The delegate pattern can become useful in a variety of scenarios. However, one of the most common use cases that comes to mind is dealing with UI components. Implementing the delegate pattern to handle the behavior of the UI components without tightly coupling it to the data model can be extremely useful. Additionally, you may find that using the delegate pattern can be helpful in a few other situations, including:
+The delegate pattern can become helpful in a variety of scenarios. However, one of the most common use cases that comes to mind is dealing with UI components. Implementing the delegate pattern to handle the behavior of the UI components without tightly coupling it to the data model can be extremely useful. Additionally, you may find that using the delegate pattern can be helpful in a few other situations, including:
 
 - Customizing the behavior of a class without subclassing
 - One-to-one relationships
@@ -114,16 +112,16 @@ The delegate pattern can become useful in a variety of scenarios. However, one o
 
 ## Limitations
 
-While this pattern can be extremely useful, it's important to recognize when it's not worthwhile to implement it. For example, if you find yourself creating a delegate protocol with only one method, it may be better to use a closure instead. Additionally, if you find that the data is being tightly coupled to the delegate, it may be better to use a subclass. A few other scenarios that you should be wary of when using the delegate pattern are:
+While this pattern can be beneficial, it's important to recognize when it's not worthwhile to implement it. For example, if you create a delegate protocol with only one method, it may be better to use a closure instead. Additionally, if a delegate is tightly coupled to the data, it may be better to use a subclass. A few other scenarios that you should be wary of when using the delegate pattern are:
 
-- Performance intensive operations
+- Performance-intensive operations
 - One-to-many relationships
 - Code complexity
 - Retain cycles (when the delegate and delegator hold strong references to one another)
 
 ## Closing Thoughts
 
-I hope this is a helpful introductory to the delegate pattern. If you have any questions or feedback, feel free to reach out to me on [Threads](https://threads.net/lyndipc_). Otherwise, research and experiment with the delegate pattern to see how you can use it in your own projects. Thanks for reading.
+This post is a helpful introduction to the delegate pattern. If you have any questions or feedback, please contact me at **lyndi@swiftguides.xyz** or on [GitHub](https://github.com/lyndipc). Otherwise, research and experiment with the delegate pattern to see how to use it in your projects. Thanks for reading.
 
 ## Further Reading
 
