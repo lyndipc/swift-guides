@@ -1,0 +1,63 @@
+---
+title: 'Adding Custom Fonts in SwiftUI'
+date: '2023-09-29'
+lastmod: '2023-08-12'
+tags: ['tutorial', 'fonts', 'info.plist', 'SwiftUI']
+draft: true
+summary: ''
+layout: PostLayout
+---
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={(2, 3)}></TOCInline>
+
+## Introduction
+
+Crafting an engaging application design is a crucial step in creating a successful app. One way to enhance the user interface is by using custom fonts to create a unique and visually appealing design. This tutorial will show you how to add custom fonts to a SwiftUI project and use them in your views.
+
+## How to Add Custom Fonts in your SwiftUI Project
+
+### Step 1: Downloading Custom Fonts
+
+Download the font files in a format that is supported by iOS, such as TTF, OTF, or WOFF. You can find free fonts on reputable websites like [Google Fonts](https://fonts.google.com/), [Font Squirrel](https://www.fontsquirrel.com/), and [DaFont](https://www.dafont.com/).
+
+### Step 2: Adding Font Files to Xcode Project
+
+1. Locate the font files and drag them into the Xcode project's `Assets` folder.
+2. Check the "Copy items if needed" checkbox to ensure the fonts are included in the app bundle.
+
+### Step 3: Updating the info.plist
+
+1. Click on your project's name in the Project Navigator.
+2. Select the `Info` tab.
+3. Hover over the last row and click the `+` button to add a new row.
+4. Enter `Fonts provided by application` as the key.
+5. Expand the newly added row and enter the name of each font file in the (String) value column.
+
+### Step 4: Using Custom Fonts in SwiftUI Views
+
+Now, you are ready to apply the fonts to your SwiftUI views. Follow these steps to use custom fonts in your SwiftUI views:
+
+1. Add the font modifier to a text view.
+2. Initialize the Font struct using the custom font name and desired size, like so:
+
+```swift
+Text("Swift is cool.")
+    .font(Font.custom("Lobster", size: 24))
+```
+
+## Styling Text with Custom Fonts
+
+You can modify the font size, weight, color, and other styling properties using the `.font` modifier. For example, you can change the font weight and text color like you would with system fonts:
+
+```swift
+Text("Swift is cool.")
+    .font(Font.custom("Lobster", size: 24))
+    .fontWeight(.bold)
+    .foregroundColor(.red)
+```
+
+## Conclusion
+
+Adding custom fonts to your SwiftUI project is a great way to enhance the user interface and create a unique design. There are many free fonts available online that you can use to create a visually appealing app. Always be sure to check the font's license before using it in your project. You can find more information about using custom fonts in the [Apple Developer Documentation](https://developer.apple.com/documentation/uikit/text_display_and_fonts/adding_a_custom_font_to_your_app).
