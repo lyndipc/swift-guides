@@ -1,0 +1,49 @@
+---
+title: 'What are Generics?'
+date: '2023-09-29'
+lastmod: '2023-10-22'
+tags: ['abstractions', 'reusability', 'intermediate']
+draft: true
+summary: ''
+layout: PostLayout
+---
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={(2, 3)}></TOCInline>
+
+## What are Generics?
+
+Generics enable you to write flexible and reusable functions, structures, classes, and enumerations that can work with any type.
+
+## Generic Functions
+
+Functions can be written to take in parameters of a generic type, allowing them to work with different types of data. For instance, a generic function might sort an array of any type of elements, not just integers or strings.
+
+This is achieved by using placeholders for types. These placeholders, known as **type parameters**, allow you to write a function without specifying the actual data types. The type parameters are specified when the function is called, and the function is then generated specifically for those types. Let's take a look at how this works.
+
+### Generic Function Syntax
+
+The syntax for a generic function is similar to that of a regular function, except that it includes a type parameter in the function signature. The type parameter is specified in angle brackets (`<>`) after the function name, and is used as a placeholder for the actual type. A generic function can take in parameters of the type specified by the type parameter, and can also return a value of that type.
+
+```swift
+func functionName<T>(parameter: T) -> T {
+    // function body
+}
+```
+
+The type parameter can be named anything you want, but it is common to use a single uppercase letter to indicate that it is a placeholder for a type.
+
+### Generic Function Example
+
+Let's take a look at a generic function that prints out the contents of an array. The function takes in an array of any type, and prints out each element on a new line.
+
+```swift
+func printArray<T>(array: [T]) {
+    for element in array {
+        print(element)
+    }
+}
+```
+
+The function takes in an array of type `T`, and prints out each element in the array. The type parameter `T` is a placeholder for the actual type of the array elements. The type parameter is specified in angle brackets (`<>`) after the function name, and is used as a placeholder for the actual type.
