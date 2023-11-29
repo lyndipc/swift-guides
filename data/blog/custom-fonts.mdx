@@ -2,8 +2,8 @@
 title: 'Adding Custom Fonts in SwiftUI'
 date: '2023-09-29'
 lastmod: '2023-08-12'
-tags: ['tutorial', 'fonts', 'info.plist', 'SwiftUI']
-draft: true
+tags: ['fonts', 'info.plist', 'SwiftUI']
+draft: false
 summary: ''
 layout: PostLayout
 ---
@@ -18,16 +18,16 @@ Crafting an engaging application design is a crucial step in creating a successf
 
 ## How to Add Custom Fonts in your SwiftUI Project
 
-### Step 1: Downloading Custom Fonts
+### Downloading Custom Fonts
 
 Download the font files in a format that is supported by iOS, such as TTF, OTF, or WOFF. You can find free fonts on reputable websites like [Google Fonts](https://fonts.google.com/), [Font Squirrel](https://www.fontsquirrel.com/), and [DaFont](https://www.dafont.com/).
 
-### Step 2: Adding Font Files to Xcode Project
+### Adding Font Files to Xcode Project
 
 1. Locate the font files and drag them into the Xcode project's `Assets` folder.
 2. Check the "Copy items if needed" checkbox to ensure the fonts are included in the app bundle.
 
-### Step 3: Updating the info.plist
+### Updating the info.plist
 
 1. Click on your project's name in the Project Navigator.
 2. Select the `Info` tab.
@@ -35,7 +35,7 @@ Download the font files in a format that is supported by iOS, such as TTF, OTF, 
 4. Enter `Fonts provided by application` as the key.
 5. Expand the newly added row and enter the name of each font file in the (String) value column.
 
-### Step 4: Using Custom Fonts in SwiftUI Views
+### Using Custom Fonts in SwiftUI Views
 
 Now, you are ready to apply the fonts to your SwiftUI views. Follow these steps to use custom fonts in your SwiftUI views:
 
@@ -44,7 +44,7 @@ Now, you are ready to apply the fonts to your SwiftUI views. Follow these steps 
 
 ```swift
 Text("Swift is cool.")
-    .font(Font.custom("Lobster", size: 24))
+    .font(.custom("Lobster", size: 24))
 ```
 
 ## Styling Text with Custom Fonts
@@ -53,7 +53,7 @@ You can modify the font size, weight, color, and other styling properties using 
 
 ```swift
 Text("Swift is cool.")
-    .font(Font.custom("Lobster", size: 24))
+    .font(.custom("Lobster", size: 24))
     .fontWeight(.bold)
     .foregroundColor(.red)
 ```
