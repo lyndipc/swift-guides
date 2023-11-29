@@ -57,11 +57,15 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                   {authorDetails.map((author) => (
                     <li className="flex items-center space-x-2" key={author.name}>
                       {author.avatar && (
-                        <div className="h-10 w-10 overflow-auto rounded-full">
-                          <Image src={author.avatar} width="40px" height="47px" alt="avatar" />
-                        </div>
+                        <Image
+                          src={author.avatar}
+                          width="38px"
+                          height="38px"
+                          alt="avatar"
+                          className="h-10 w-10 rounded-full"
+                        />
                       )}
-                      <dl className="whitespace-nowrap text-sm font-medium leading-5">
+                      <dl className="relative block whitespace-nowrap text-sm font-medium leading-5">
                         <dt className="sr-only">Name</dt>
                         <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
                         <dt className="sr-only">Twitter</dt>
