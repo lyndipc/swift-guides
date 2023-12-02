@@ -16,7 +16,7 @@ export default function AuthorLayout({ children, frontMatter }) {
         </div>
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
           <div className="flex flex-col items-center pt-8">
-            <div className="center h-48 w-48 overflow-auto rounded-full">
+            <div className="center h-48 w-48 overflow-hidden rounded-full">
               <Image src={avatar} alt="avatar" width="240px" height="300px" />
             </div>
             <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">{name}</h3>
